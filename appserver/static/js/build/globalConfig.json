@@ -1,0 +1,151 @@
+{
+    "pages": {
+        "configuration": {
+            "description": "Set up your add-on", 
+            "tabs": [
+                {
+                    "entity": [
+                        {
+                            "label": "Enable", 
+                            "field": "proxy_enabled", 
+                            "type": "checkbox"
+                        }, 
+                        {
+                            "label": "Proxy Type", 
+                            "field": "proxy_type", 
+                            "defaultValue": "http", 
+                            "options": {
+                                "autoCompleteFields": [
+                                    {
+                                        "label": "http", 
+                                        "value": "http"
+                                    }, 
+                                    {
+                                        "label": "socks4", 
+                                        "value": "socks4"
+                                    }, 
+                                    {
+                                        "label": "socks5", 
+                                        "value": "socks5"
+                                    }
+                                ], 
+                                "disableSearch": true
+                            }, 
+                            "type": "singleSelect"
+                        }, 
+                        {
+                            "label": "Host", 
+                            "field": "proxy_url", 
+                            "validators": [
+                                {
+                                    "minLength": 0, 
+                                    "maxLength": 4096, 
+                                    "errorMsg": "Max host length is 4096", 
+                                    "type": "string"
+                                }
+                            ], 
+                            "type": "text"
+                        }, 
+                        {
+                            "label": "Port", 
+                            "field": "proxy_port", 
+                            "validators": [
+                                {
+                                    "range": [
+                                        1, 
+                                        65535
+                                    ], 
+                                    "type": "number"
+                                }
+                            ], 
+                            "type": "text"
+                        }, 
+                        {
+                            "label": "Username", 
+                            "field": "proxy_username", 
+                            "validators": [
+                                {
+                                    "minLength": 0, 
+                                    "maxLength": 50, 
+                                    "errorMsg": "Max length of username is 50", 
+                                    "type": "string"
+                                }
+                            ], 
+                            "type": "text"
+                        }, 
+                        {
+                            "label": "Password", 
+                            "field": "proxy_password", 
+                            "validators": [
+                                {
+                                    "minLength": 0, 
+                                    "maxLength": 8192, 
+                                    "errorMsg": "Max length of password is 8192", 
+                                    "type": "string"
+                                }
+                            ], 
+                            "encrypted": true, 
+                            "type": "text"
+                        }, 
+                        {
+                            "label": "Remote DNS resolution", 
+                            "field": "proxy_rdns", 
+                            "type": "checkbox"
+                        }
+                    ], 
+                    "name": "proxy", 
+                    "title": "Proxy", 
+                    "options": {
+                        "saveValidator": "function(formData) { if(!formData.proxy_enabled || formData.proxy_enabled === '0') {return true; } if(!formData.proxy_url) { return 'Proxy Host can not be empty'; } if(!formData.proxy_port) { return 'Proxy Port can not be empty'; } return true; }"
+                    }
+                }, 
+                {
+                    "entity": [
+                        {
+                            "field": "api_key", 
+                            "required": true, 
+                            "defaultValue": "", 
+                            "help": "API key for Shodan", 
+                            "type": "text", 
+                            "label": "API Key", 
+                            "validators": [
+                                {
+                                    "minLength": 0, 
+                                    "maxLength": 8192, 
+                                    "errorMsg": "Max length of text input is 8192", 
+                                    "type": "string"
+                                }
+                            ]
+                        }, 
+                        {
+                            "field": "index_name", 
+                            "required": true, 
+                            "defaultValue": "main", 
+                            "help": "", 
+                            "type": "text", 
+                            "label": "Index Name", 
+                            "validators": [
+                                {
+                                    "minLength": 0, 
+                                    "maxLength": 8192, 
+                                    "errorMsg": "Max length of text input is 8192", 
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    ], 
+                    "name": "additional_parameters", 
+                    "title": "Add-on Settings"
+                }
+            ], 
+            "title": "Configuration"
+        }
+    }, 
+    "meta": {
+        "version": "1.0.0", 
+        "apiVersion": "3.0.0", 
+        "name": "TA-shodan-arf", 
+        "restRoot": "TA_shodan_arf", 
+        "displayName": "shodan-arf"
+    }
+}
