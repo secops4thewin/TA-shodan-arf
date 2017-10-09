@@ -15,3 +15,8 @@ After installation go to https://your.splunk.address/en-GB/app/TA-sans_isc/confi
 If you have a proxy configure it under the proxy settings
 If you want to change logging settings click logging
 Click Add-On Settings - Specify the index name that you created before
+
+Have issues?
+Post to https://github.com/secops4thewin/TA-shodan-arf
+
+The use of the APIs of Shodan are subject to the terms and conditions set out by Shodan
